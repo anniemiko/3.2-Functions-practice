@@ -154,13 +154,15 @@ function filterLongWords(words, i){
     var longWords = [];
     for (var j = 0; j < words.length; j++) {
       if(words[j].length > i){
-        longWords = longWords + ', ' + words[j];
+        longWords.push(words[j]);
       }
     }
     return longWords;
 }
 console.log(filterLongWords(['dive', 'granola', 'at', 'grape'], 3));
-console.assert(filterLongWords(['dive', 'granola', 'at', 'grape'], 3) == ('dive', 'granola', 'grape'));
+console.assert(filterLongWords(['dive', 'granola', 'at', 'grape'], 3) == ['dive', 'granola', 'grape']);
+
+console.log(['a'][0] == ['a'][0]);
 // ---------------------
 // Write a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
 // ---------------------
