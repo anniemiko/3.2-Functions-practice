@@ -151,8 +151,16 @@ console.assert(findLongestWord (['yes', 'no', 'then', 'longer']) == 6);
 function filterLongWords(words, i){
     "use strict";
     //...
+    var longWords = [];
+    for (var j = 0; j < words.length; j++) {
+      if(words[j].length > i){
+        longWords = longWords + ', ' + words[j];
+      }
+    }
+    return longWords;
 }
-
+console.log(filterLongWords(['dive', 'granola', 'at', 'grape'], 3));
+console.assert(filterLongWords(['dive', 'granola', 'at', 'grape'], 3) == ('dive', 'granola', 'grape'));
 // ---------------------
 // Write a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
 // ---------------------
@@ -160,4 +168,19 @@ function filterLongWords(words, i){
 function charFreq(string){
     "use strict";
     //...
+    var freq = {};
+    for (var i = 0; i < string.length; i++) {
+      var char = string.charAt(i);
+      if (freq[char]){
+      freq[char]++;
+      } else {
+      freq[char] = 1;
+      }
+    }
+    return freq;
 }
+
+// http://stackoverflow.com/questions/18619785/counting-frequency-of-characters-in-a-string-using-javascript
+
+console.log(charFreq("abbabcbdbabdbdbabababcbcbab"));
+console.assert(charFreq("abbabcbdbabdbdbabababcbcbab") == {a: 7, b: 14, c: 3, d: 3});
